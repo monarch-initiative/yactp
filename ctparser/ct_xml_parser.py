@@ -14,7 +14,11 @@ class ClinicalTrialsXmlParser:
             raise ValueError("Bad root element (not clinical_study): ", self.root.tag)
         self.org_study_id = self._get_nested_element('id_info', 'org_study_id')
         self.nct_id = self._get_nested_element('id_info', 'nct_id')
-        self.brief_title = self._get_element('brief_title')
+        brief_title = self._get_element('brief_title')
+        if len(brief_title) < 200:
+            self.brief_title = brief_title
+        else:
+            self.brief_title = brief_title[0:200] + "(truncated at 200 chars)"
         self.start_date = self._get_element('start_date')
         self.completion_date = self._get_element('completion_date')
         self.phase = self._get_element('phase')
