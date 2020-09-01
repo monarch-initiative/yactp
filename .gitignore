@@ -128,3 +128,4 @@ dmypy.json
 # Pyre type checker
 .pyre/
 /ct_data/
+/clinical_trials_pki_studies.tsv

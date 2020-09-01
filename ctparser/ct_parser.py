@@ -50,7 +50,7 @@ class ClinicalTrialsParser:
             zip_ref.extractall(query_dir)
         return
 
-    def parse_downloaded_xml_files(self):
+    def parse_downloaded_xml_files(self, query):
         if self.query_dir is None:
             print("Cannot parse XML files because there is no saved directory")
             return
@@ -59,7 +59,7 @@ class ClinicalTrialsParser:
             for filename in files:
                 if filename.endswith("xml"):
                     xmlpath = os.path.join(self.query_dir, filename)
-                    parser = ClinicalTrialsXmlParser(xmlpath)
+                    parser = ClinicalTrialsXmlParser(xmlpath, query)
                     self.data_rows.append(parser.get_tsv_row())
 
     def get_header(self):
