@@ -58,6 +58,7 @@ class ClinicalTrialsParser:
             print("Cannot parse XML files because there is no saved directory")
             return
         print(ClinicalTrialsXmlParser.get_tsv_header())
+
         for root, dirs, files in os.walk(self.query_dir):
             for filename in files:
                 if filename.endswith("xml"):

@@ -23,8 +23,8 @@ def main():
     for pki in protein_kinase_inhibitors:
         ctp.download_query_results(query=pki)
         ctp.parse_downloaded_xml_files(query=pki)
-        for row in ctp.get_data_rows():
-            fh.write("%s\n" % row)
+    for row in ctp.get_data_rows():
+        fh.write("%s\n" % row)
     fh.close()
 
 
