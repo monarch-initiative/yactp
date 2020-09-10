@@ -30,7 +30,7 @@ class ClinicalTrialsParser:
         else:
             os.makedirs(query_dir)
         base_url = 'https://clinicaltrials.gov/ct2/download_studies?term=%s&down_count=%d&down_format=csv' % (
-        query, count)
+            query, count)
         save_path = os.path.join(query_dir, 'archive.zip')
 
         if not os.path.exists(save_path):
@@ -46,8 +46,11 @@ class ClinicalTrialsParser:
                 if filename.endswith("xml"):
                     print("XML files in %s already extracted" % query_dir)
                     return
-        with zipfile.ZipFile(save_path, 'r') as zip_ref:
-            zip_ref.extractall(query_dir)
+        try:
+            with zipfile.ZipFile(save_path, 'r') as zip_ref:
+                zip_ref.extractall(query_dir)
+        except:
+            pass
         return
 
     def parse_downloaded_xml_files(self, query):

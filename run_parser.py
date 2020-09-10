@@ -8,6 +8,8 @@ def get_kinase_list():
         for line in f:
             if len(line) > 1:
                 protein_kinase_inhibitors.append(line.rstrip())
+    protein_kinase_inhibitors = list(dict.fromkeys(protein_kinase_inhibitors))
+    print(protein_kinase_inhibitors)
     return protein_kinase_inhibitors
 
 
