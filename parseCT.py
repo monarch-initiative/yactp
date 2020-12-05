@@ -1,5 +1,7 @@
 import argparse
 import os
+from ctparser import CtStudy, CtStudyAggregator
+from collections import defaultdict
 from typing import List
 
 from ctparser import ClinicalTrialsParser
@@ -46,18 +48,36 @@ def get_kinase_list(path: str) -> List:
 
 
 
+def print_stats(studies: List, outname) -> None:
+    fh = open(outname, 'wt')
+    studycounts = defaultdict(int)
+    medcounts = defaultdict(int)
+    for study in studies:
+        studycounts[study.highest_phase] += 1
+        medcounts[study.intervention_name] += 1
+    for k,v in studycounts.items():
+        fh.write("Phase %d n=%d\n" % (k,v))
+    for k,v in medcounts.items():
+        fh.write("%s: %d studies\n" % (k,v))
+
+
 
 def main():
-    ctp = ClinicalTrialsParser()
+    studies = []
+    
     protein_kinase_inhibitors = get_kinase_list(args.input)
     fh = open('clinical_trials_pki_studies.tsv', 'wt')
-    fh.write("%s\n" % ctp.get_header())
+    fh.write("%s\n" % CtStudy.get_tsv_header())
     for pki in protein_kinase_inhibitors:
+        ctp = ClinicalTrialsParser()
         ctp.download_query_results(query=pki)
         ctp.parse_downloaded_xml_files(query=pki)
-    for row in ctp.get_data_rows():
-        fh.write("%s\n" % row)
+        studies = ctp.get_studies()
+        aggregator = CtStudyAggregator(studies=studies)
+    for study in studies:
+        fh.write("%s\n" % study.get_tsv_row())
     fh.close()
+    print_stats(studies=studies, outname="yactp-stats.txt")
 
 
 if __name__ == "__main__":

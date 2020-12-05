@@ -1,7 +1,6 @@
 import requests
 import zipfile
-import time
-import glob
+from typing import List
 import os
 
 from .ct_xml_parser import ClinicalTrialsXmlParser
@@ -17,8 +16,7 @@ class ClinicalTrialsParser:
         """
         self.datadir = 'ct_data'
         self.query_dir = None
-        self.header = ClinicalTrialsXmlParser.get_tsv_header()
-        self.data_rows = []
+        self.studies = []  # List of CtStudy objects
         if not os.path.exists(self.datadir):
             os.makedirs(self.datadir)
 
@@ -54,20 +52,18 @@ class ClinicalTrialsParser:
         return
 
     def parse_downloaded_xml_files(self, query):
+        """
+        This function parsers each of the downloaded ClinicalTrials.gov XML files.
+        """
         if self.query_dir is None:
             print("Cannot parse XML files because there is no saved directory")
             return
-        print(ClinicalTrialsXmlParser.get_tsv_header())
-
         for root, dirs, files in os.walk(self.query_dir):
             for filename in files:
                 if filename.endswith("xml"):
                     xmlpath = os.path.join(self.query_dir, filename)
                     parser = ClinicalTrialsXmlParser(xmlpath, query)
-                    self.data_rows.append(parser.get_tsv_row())
+                    self.studies.append(parser.parse())
 
-    def get_header(self):
-        return self.header
-
-    def get_data_rows(self):
-        return self.data_rows
+    def get_studies(self) -> List:
+        return self.studies
