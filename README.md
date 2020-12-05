@@ -75,5 +75,14 @@ shows the structure of the output file.
 <tr><td>afatinib</td><td>BIBW2992 ORL</td><td>NCT01427478</td><td>Evaluation of Afatinib in Maintenance Therapy in Squamous Cell Carcinoma of the Head and Neck</td><td>September 2011</td><td>November 2021</td><td>Phase 3</td><td>Head and Neck Squamous Cell Carcinoma</td><td>	Drug</td><td>AFATINIB</td><td>Carcinoma;Carcinoma, Squamous Cell;Squamous Cell Carcinoma of Head and Neck</td></tr>
 </table>
 
-We note that this table contains information
+The script also outputs a summary table that is intended for downstream use, ``clinical_trials_by_phase.tsv``:
+
+<table>
+<tr><td>Disease</td><td>MeSH id</td><td>medication</td><td>Phase</td><td>Earliest start year</td><td>Latest start year</td><td>NCIT</td></tr>
+<tr><td>Mastocytosis</td><td>D008415 imatinib</td><td>Phase 2</td><td>2004</td><td>2004</td><td>NCT00171912;NCT00109707
+<tr><td>Mastocytosis</td><td>D008415 imatinib</td><td>Phase 4</td><td>2011</td><td>2011</td><td>NCT01297777</td></tr>
+</table>
+
+``Earliest start date`` and ``Latest start date`` are used to show the earliest and latest year when a study started (they are of course the
+same if there was only one study or if all studies started in the same year).
 
