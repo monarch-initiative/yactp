@@ -26,9 +26,9 @@ The script will generate an output file called ``clinical_trials_pki_studies``.
 
 	
 
-
-|  query	|  org_study_id	| nct_id| 	brief_title	| start_date| 	completion_date	phase	| condition	| intervention_type	| intervention_name| 	mesh| 
-|-	|-	|-	|-	|-	|-	|-	|-	|-	|-	|-	|
-afatinib|	MedOPP137	|NCT03623750	|E GFR TKI and EGF-P TI C Ombination in EGFR mutA nt NSCL C	|July 6, 2018	|August 1, 2020	|Phase 1/Phase 2|	Carcinoma, Non-Small-Cell Lung	|Drug|	EGFR-TK Inhibitor|	Carcinoma, Non-Small-Cell Lung|
-afatinib	|BIBW2992 ORL|	NCT01427478	|Evaluation of Afatinib in Maintenance Therapy in Squamous Cell Carcinoma of the Head and Neck|September 2011	|November 2021|	Phase 3	|Head and Neck Squamous Cell Carcinoma|	Drug|	AFATINIB	|Carcinoma;Carcinoma, Squamous Cell;Squamous Cell Carcinoma of Head and Neck|
+<table>
+<tr><td>query</td><td>org_study_id</td><td>nct_id</td><td>brief_title</td><td>start_date</td><td>completion_date</td><td>phase</td><td>condition</td><td>intervention_type</td><td>intervention_name</td><td>	mesh</td></tr>
+<tr><td>afatinib</td><td>MedOPP137</td><td>NCT03623750</td><td>E GFR TKI and EGF-P TI C Ombination in EGFR mutA nt NSCL C	</td><td>July 6, 2018</td><td>August 1, 2020</td><td>Phase 1/Phase 2</td><td>Carcinoma, Non-Small-Cell Lung</td><td>Drug</td><td>EGFR-TK Inhibitor</td><td>Carcinoma, Non-Small-Cell Lung</td></tr>
+<tr><td>afatinib</td><td>BIBW2992 ORL</td><td>NCT01427478</td><td>Evaluation of Afatinib in Maintenance Therapy in Squamous Cell Carcinoma of the Head and Neck</td><td>September 2011</td><td>November 2021</td><td>	Phase 3	</td><td>Head and Neck Squamous Cell Carcinoma</td><td>	Drug|	AFATINIB</td><td>Carcinoma;Carcinoma, Squamous Cell;Squamous Cell Carcinoma of Head and Neck</td></tr>
+</table>
 
