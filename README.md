@@ -79,8 +79,8 @@ The script also outputs a summary table that is intended for downstream use, ``c
 
 <table>
 <tr><td>Disease</td><td>MeSH id</td><td>medication</td><td>Phase</td><td>Earliest start year</td><td>Latest start year</td><td>NCIT</td></tr>
-<tr><td>Mastocytosis</td><td>D008415 imatinib</td><td>Phase 2</td><td>2004</td><td>2004</td><td>NCT00171912;NCT00109707
-<tr><td>Mastocytosis</td><td>D008415 imatinib</td><td>Phase 4</td><td>2011</td><td>2011</td><td>NCT01297777</td></tr>
+<tr><td>Mastocytosis</td><td>D008415</td><td>imatinib</td><td>Phase 2</td><td>2004</td><td>2004</td><td>NCT00171912;NCT00109707
+<tr><td>Mastocytosis</td><td>D008415</td><td>imatinib</td><td>Phase 4</td><td>2011</td><td>2011</td><td>NCT01297777</td></tr>
 </table>
 
 ``Earliest start date`` and ``Latest start date`` are used to show the earliest and latest year when a study started (they are of course the
