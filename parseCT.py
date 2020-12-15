@@ -104,7 +104,7 @@ def main():
     fh.close()
     print_stats(studies=studies, outname="yactp-stats.txt")
     fh = open('clinical_trials_by_phase.tsv', 'wt')
-    fh.write("neoplasm\tmesh_id\tdrug\tphase\tstart_date\tcompletion_date\tnct_id\n")
+    fh.write("disease\tmesh_id\tdrug\tphase\tstart_date\tcompletion_date\tnct_id\n")
     for s in summaries:
         fh.write(s + "\n")
 
