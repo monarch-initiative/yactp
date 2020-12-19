@@ -51,6 +51,8 @@ imatinib
 (...)
 ```
 
+Two example input files can be found in the ``example_inputs`` directory.
+
 Run the script as follows
 ```
 python parseCT.py -i <path-to-input-file> -m <path to the MeSH file from the first step>
@@ -86,3 +88,5 @@ The script also outputs a summary table that is intended for downstream use, ``c
 ``Earliest start date`` and ``Latest start date`` are used to show the earliest and latest year when a study started (they are of course the
 same if there was only one study or if all studies started in the same year).
 
+The script downloads files and stores them in a (newly created) directory called ``ct_data``. This directory can be
+deleted after running the script.
