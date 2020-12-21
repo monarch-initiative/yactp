@@ -15,7 +15,7 @@ parser = argparse.ArgumentParser(prog="parseCT.py",
 parser.add_argument('-i',
                        '--input',
                        type=str,
-                       default='kinase_data/kinase_inhibitors.txt',
+                       default='example_inputs/kinase_inhibitors.txt',
                        help='path to file with target medications')
 
 parser.add_argument('-m',
@@ -70,7 +70,6 @@ def get_mesh_dictionary(path: str) -> Dict:
     return meshd
 
 
-
 def print_stats(studies: List, outname) -> None:
     fh = open(outname, 'wt')
     studycounts = defaultdict(int)
@@ -82,7 +81,6 @@ def print_stats(studies: List, outname) -> None:
         fh.write("Phase %d n=%d\n" % (k,v))
     for k,v in medcounts.items():
         fh.write("%s: %d studies\n" % (k,v))
-
 
 
 def main():
