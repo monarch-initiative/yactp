@@ -1,7 +1,6 @@
 from typing import List, Dict
 from collections import defaultdict
 
-from .ct_study import CtStudy
 from .disease_med_pair import DiseaseMedPair
 
 
