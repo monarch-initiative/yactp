@@ -2,12 +2,11 @@ from typing import List
 import re
 
 
-
 class CtStudy:
-    def __init__(self, query:str, org_study_id:str, nct_id: str, brief_title: str,
-                start_date: str, completion_date: str, phase: str,
-                condition:str, intervention_type: str,
-                intervention_name:str, mesh_term_list:List[str]) -> None:
+    def __init__(self, query: str, org_study_id: str, nct_id: str, brief_title: str,
+                 start_date: str, completion_date: str, phase: str,
+                 condition: str, intervention_type: str,
+                 intervention_name: str, mesh_term_list: List[str]) -> None:
         super().__init__()
         self._query = query
         self._org_study_id = org_study_id
@@ -18,14 +17,14 @@ class CtStudy:
             self._brief_title = brief_title[0:200] + "(truncated at 200 chars)"
         self._start_date = start_date
         self._completion_date = completion_date
-        regex= "[12]\d{3,3}"
-        match= re.findall(regex, start_date)
+        regex = "[12]\d{3,3}"
+        match = re.findall(regex, start_date)
         if not match:
             print("Could not find year in start date '%s'" % start_date)
             self._start_year = None
         else:
             self._start_year = int(match[0])
-        match= re.findall(regex, completion_date)
+        match = re.findall(regex, completion_date)
         if not match:
             self._completion_year = None
         else:
@@ -45,8 +44,9 @@ class CtStudy:
         return "\t".join(elems)
 
     def get_tsv_row(self):
-        elems = [self._query, self._org_study_id, self._nct_id, self._brief_title, self._start_date, self._completion_date,
-                self._phase, self._condition, self._intervention_type, self._intervention_name, self._mesh_text]
+        elems = [self._query, self._org_study_id, self._nct_id, self._brief_title, self._start_date,
+                 self._completion_date,
+                 self._phase, self._condition, self._intervention_type, self._intervention_name, self._mesh_text]
         return "\t".join(elems)
 
     def _calculate_highest_phase(self, phase):
@@ -89,18 +89,18 @@ class CtStudy:
     @property
     def org_study_id(self):
         return self._org_study_id
-    
+
     @property
     def nct_id(self):
         return self._nct_id
 
     @property
     def brief_title(self):
-        return self._brief_title 
-    
+        return self._brief_title
+
     @property
     def start_date(self):
-        return self._start_date 
+        return self._start_date
 
     @property
     def completion_date(self):
@@ -108,7 +108,7 @@ class CtStudy:
 
     @property
     def start_year(self):
-        return self._start_year 
+        return self._start_year
 
     @property
     def completion_year(self):
@@ -116,7 +116,7 @@ class CtStudy:
 
     @property
     def phase(self):
-        return self._phase 
+        return self._phase
 
     @property
     def highest_phase(self):
@@ -124,11 +124,11 @@ class CtStudy:
 
     @property
     def condition(self):
-        return self._condition 
+        return self._condition
 
     @property
     def intervention_type(self):
-        return self._intervention_type  
+        return self._intervention_type
 
     @property
     def intervention_name(self):
@@ -147,5 +147,3 @@ class CtStudy:
 
     def has_valid_start_year(self):
         return self._start_year is not None
-
-            

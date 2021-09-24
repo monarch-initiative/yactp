@@ -1,7 +1,7 @@
 # yactp
 Yet Another Clinical Trials Parser
 
-This parser downloads data from the ClinicalTrials.gov server and shows the cross section between a set of diseases
+This parser downloads data from the ClinicalTrials.gov server and extracts the cross section between a set of diseases
 that descend from some MeSH term and with a list of medications of interest. For instance, we might be interested in
 seeing all Clinical Trials for tyrosine kinase inhibitors and descendants of [Neoplasms - D009369](https://meshb.nlm.nih.gov/record/ui?ui=D009369).
 
@@ -68,8 +68,8 @@ For each of the medications in this list, the parser downloads data using this q
 where ``%s`` is replaced by the medication of interest. 
 
 
-The script will generate an output file called ``clinical_trials_pki_studies``. The following table
-shows the structure of the output file.	
+The script will generate an output file called ``clinical_trials_pki_studies``. 
+This file contains detailed results of parsing. The following table  shows the structure of the output file.	
 
 <table>
 <tr><td>query</td><td>org_study_id</td><td>nct_id</td><td>brief_title</td><td>start_date</td><td>completion_date</td><td>phase</td><td>condition</td><td>intervention_type</td><td>intervention_name</td><td>	mesh</td></tr>
@@ -89,4 +89,4 @@ The script also outputs a summary table that is intended for downstream use, ``c
 same if there was only one study or if all studies started in the same year).
 
 The script downloads files and stores them in a (newly created) directory called ``ct_data``. This directory can be
-deleted after running the script.
+deleted after running the script. Finally, the script outputs a logfile ``yactp-stats.txt`` with some details of the parsing results.

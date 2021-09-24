@@ -76,15 +76,18 @@ def print_stats(studies: List, outname) -> None:
     medcounts = defaultdict(int)
     for study in studies:
         studycounts[study.highest_phase] += 1
-        medcounts[study.intervention_name] += 1
+        medcounts[study.query] += 1
     for k,v in studycounts.items():
-        fh.write("Phase %d n=%d\n" % (k,v))
+        if k == -1:
+            fh.write("Invalid phase n=%d\n" % v)
+        else:
+            fh.write("Phase %d n=%d\n" % (k,v))
     for k,v in medcounts.items():
         fh.write("%s: %d studies\n" % (k,v))
 
 
 def main():
-    studies = []
+    study_list = []
     summaries = []
     protein_kinase_inhibitors = get_kinase_list(args.input)
     mesh_dict = get_mesh_dictionary(mesh_path)
@@ -96,11 +99,12 @@ def main():
         ctp.parse_downloaded_xml_files(query=pki)
         studies = ctp.get_studies()
         aggregator = CtStudyAggregator(studies=studies, mesh_dictionary=mesh_dict)
+        study_list.extend(studies)
         summaries.extend(aggregator.get_sorted_studies())
-    for study in studies:
+    for study in study_list:
         fh.write("%s\n" % study.get_tsv_row())
     fh.close()
-    print_stats(studies=studies, outname="yactp-stats.txt")
+    print_stats(studies=study_list, outname="yactp-stats.txt")
     fh = open('clinical_trials_by_phase.tsv', 'wt')
     fh.write("disease\tmesh_id\tdrug\tphase\tstart_date\tcompletion_date\tnct_id\n")
     for s in summaries:
